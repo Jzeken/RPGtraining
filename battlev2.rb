@@ -54,33 +54,35 @@ end
 class Arena
   def duel(hero1,hero2)
 
-  attack = rand(1..2)
-  if attack == 1
-    attacker = hero1
-    defender = hero2
-  elsif attack == 2
-    attacker = hero2
-    defender = hero1
-  end
+    attack = rand(1..2)
+    if attack == 1
+      attacker = hero1
+      defender = hero2
+    elsif attack == 2
+      attacker = hero2
+      defender = hero1
+    end
 
-  puts "Attacker #{attacker.name} : #{attacker.hp + attacker.armor} ||V.S Defender|| #{defender.name} : #{defender.hp + defender.armor}"
+    puts "Attacker #{attacker.name} : #{attacker.hp + attacker.armor} ||V.S Defender|| #{defender.name} : #{defender.hp + defender.armor}"
 
-  chance = rand(24..90)
-  if chance >= attacker.critchance
-    dealth = attacker.critdmg + attacker.damage - defender.damage
-    defender.hp = (defender.hp + defender.armor) - dealth
-  elsif chance != attacker.critchance
-    dealth = attacker.damage - defender.damage
-    defender.hp = (defender.hp + defender.armor) - dealth
-  end
+    chance = rand(24..90)
+    if chance >= attacker.critchance
+      dealth = attacker.critdmg + attacker.damage - defender.damage
+      defender.armor = dealth - defender.armor
+      defender.hp = (defender.hp + defender.armor) - dealth
+    elsif chance != attacker.critchance
+      dealth = attacker.damage - defender.damage
+      defender.armor = dealth - defender.armor
+      defender.hp = (defender.hp + defender.armor) - dealth
+    end
 
-  #        if chance == attacker.critchance
-  #            newdamage =  attacker.damage + attacker.critdmg
-  #        end
+    #        if chance == attacker.critchance
+    #            newdamage =  attacker.damage + attacker.critdmg
+    #        end
 
-  #        dealth = attacker.damage - defender.damage
-  #        defender.hp = (defender.hp + defender.armor) - dealth
-  puts "#{attacker.name} have dealth #{dealth} damage to #{defender.name}. Enemy's HP: #{defender.hp} "
-  puts "crit chance #{chance} critical damage #{attacker.critdmg}"
+    #        dealth = attacker.damage - defender.damage
+    #        defender.hp = (defender.hp + defender.armor) - dealth
+    puts "#{attacker.name} have dealth #{dealth} damage to #{defender.name}. Enemy's HP: #{defender.hp} "
+    puts "crit chance #{chance} critical damage #{attacker.critdmg}"
   end
 end
