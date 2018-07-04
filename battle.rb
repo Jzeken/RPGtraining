@@ -36,7 +36,7 @@ end
 class Tank < Hero
     attr_accessor :hp , :armor, :damage, :name
     def initialize(name)
-        @name = "Healer"
+        @name = name
         @hp = 100
         @armor = 100
         @damage = 0.5
