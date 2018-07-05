@@ -1,5 +1,10 @@
 class Arena
   def duel (hero1, hero2, mode)
+    if mode == deathmatch
+      Mode.Deathmatch
+    elsif mode == turnbase
+      Mode.Turnbase
+    end
   end
 end
 
@@ -53,7 +58,8 @@ class Tank < Hero
 end
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
-class Mode
+class Mode 
+
   def Deathmatch (hero1, hero2)
     attack = rand(1..2)
     if attack == 1
@@ -83,7 +89,6 @@ class Mode
     else
     end
   end
-
   def Turnbase (hero1, hero2)
     limit = 5;
  
@@ -98,8 +103,10 @@ class Mode
       defender = hero1
       turnlimit = attacker - limit
     end
+    
 
     puts "Attacker #{attacker.name} ||V.S Defender|| #{defender.name}"
+    puts "#{attacker.name} turns left #{turnlimit}."
 
     chance = rand(24..90)
     if chance >= attacker.critchance
