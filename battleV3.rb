@@ -1,9 +1,9 @@
 class Arena
   def duel (hero1, hero2, mode)
-    if mode == deathmatch
-      Mode.Deathmatch
-    elsif mode == turnbase
-      Mode.Turnbase
+    if mode == "deathmatch"
+      Mode.new.Deathmatch(hero1, hero2)
+    elsif mode == "turnbase"
+      Mode.new.Turnbase(hero1, hero2)
     end
   end
 end
